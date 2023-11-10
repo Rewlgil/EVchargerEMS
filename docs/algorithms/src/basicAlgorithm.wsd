@@ -1,0 +1,27 @@
+@startuml basicAlgorithm
+
+:start;
+
+while (loop through data) is (not completed)
+    if (power usage < charge threshold) then (can charge)
+        if (ESS full) then (full)
+            :do not charge;
+        else (not full)
+            if (time) then (on-peak)
+                :do not charge;
+            else (off-peak)
+                :charge;
+            endif
+        endif
+    elseif (power usage > discharge threshold) then (need discharge)
+        if (ESS deplete) then (depleted)
+            :do not discharge;
+        else (not deplete)
+            :discharge;
+        endif
+    endif
+endwhile(completed)
+
+:end;
+
+@enduml
